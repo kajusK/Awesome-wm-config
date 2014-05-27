@@ -37,7 +37,7 @@ end
 modkey = "Mod4"
 terminal = "xterm"
 editor = "vim"
-wallpaper = "default"
+wallpaper = "/home/kajus/Obrázky/tapety/earth.jpg"
 
 editor_cmd = terminal .. " -e " .. editor
 configpath = os.getenv("HOME") .. "/.config/awesome/"
@@ -72,9 +72,22 @@ widgets = {}
 function widget_add(widget)
 	table.insert(widgets, widget)
 end
+separator = wibox.widget.textbox()
+separator:set_text(" | ")
+
+mailboxes = {
+	{"gmail", "/home/kajus/Mail/gmail/INBOX"},
+	{"seznam", "/home/kajus/Mail/seznam/INBOX"},
+	{"centrum", "/home/kajus/Mail/centrum/INBOX"},
+	{"gymjev", "/home/kajus/Mail/gymjev/INBOX"}
+}
 
 require("widgets.clock")
+widget_add(separator)
 require("widgets.battery")
+widget_add(separator)
+require("widgets.mail")
+widget_add(separator)
 require("widgets.kb_layout")
 
 -- some WIBOX stuff
