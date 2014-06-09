@@ -20,7 +20,7 @@ local awesomemenu = {
 	{ "quit", awesome.quit },
 }
 
-local mainmenu = awful.menu({
+mymainmenu = awful.menu({
 	items = {
 		{ "monitor", monitormenu },
 		{ "office", officemenu },
@@ -34,4 +34,4 @@ local mainmenu = awful.menu({
 })
 
 launcher = awful.widget.launcher({ image = beautiful.awesome_icon,
-                                     menu = mainmenu })
+                                     menu = mymainmenu })
