@@ -1,9 +1,5 @@
 local wibox = require("wibox")
 
-local function get_battery()
-
-end
-
 local battery = wibox.widget.textbox()
 battery:set_text("Battery")
 local batterytimer = timer({ timeout = 5 })
