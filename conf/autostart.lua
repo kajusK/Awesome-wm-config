@@ -8,6 +8,7 @@ local cmds =
 {
 	"nm-applet",
 	"pidgin",
+	"seafile-applet",
 }
 
 for _,i in pairs(cmds) do

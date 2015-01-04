@@ -37,7 +37,7 @@ end
 modkey = "Mod4"
 terminal = "xterm"
 editor = "vim"
-wallpaper = "/home/kajus/Obrázky/tapety/earth.jpg"
+wallpaper = "/home/kajus/Obrázky/tapety/iss_window.jpg"
 
 editor_cmd = terminal .. " -e " .. editor
 configpath = os.getenv("HOME") .. "/.config/awesome/"
