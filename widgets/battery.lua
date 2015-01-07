@@ -14,10 +14,15 @@ batterytimer:connect_signal("timeout",
 			return
 		end
 		bat = tonumber(string.sub(string.match(res, "%d+%%") or "0%", 1, -2))
-		time = string.match(res, "%d+:%d+") or "00:00"
+		time = string.match(res, "%d+:%d+") or false
 		charging = string.match(res, "Charging") or false
 
-		battery:set_text(bat .. "%, " .. time)
+		if time then
+			battery:set_text(bat .. "%, " .. time)
+		else
+			battery:set_text(bat .. "%")
+		end
+
 		if charging or bat > 20 then
 			notified = 100
 			return
