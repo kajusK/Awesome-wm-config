@@ -1,10 +1,12 @@
 local wibox = require("wibox")
 local naughty = require("naughty")
+local gears = require("gears")
 
 local battery = wibox.widget.textbox()
 local notified = 100
 battery:set_text("Battery")
-local batterytimer = timer({ timeout = 10 })
+
+local batterytimer = gears:timer({ timeout = 10 })
 
 
 function battery_check()
