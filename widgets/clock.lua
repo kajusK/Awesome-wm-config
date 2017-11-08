@@ -1,9 +1,10 @@
 --[[
 Simple clock and calendar widget
 Example http://awesome.naquadah.org/wiki/Naughty modified to work
-	under version 3.5
+	under version 4.2
 --]]
 local awful = require("awful")
+local wibox = require("wibox")
 local naughty = require("naughty")
 
 local calendar = nil
@@ -25,7 +26,9 @@ function add_calendar(inc_offset)
 	local day = datespec.day
 	datespec = datespec.year * 12 + datespec.month - 1 + offset
 	datespec = (datespec % 12 + 1) .. " " .. math.floor(datespec / 12)
-	local cal = awful.util.pread("cal -m " .. datespec)
+	local fh = io.popen("cal -m " .. datespec)
+	cal = fh:read("*all")
+	fh:close()
 	cal = string.gsub(cal, "^%s*(.-)%s*$", "%1")
 	if offset == 0 then
 		cal = string.gsub(cal, "%s".. day .."%s", "<span color='#FF0000'>%1</span>", 1)
@@ -38,11 +41,12 @@ function add_calendar(inc_offset)
 	})
 end
 
-mytextclock = awful.widget.textclock()
+mytextclock = wibox.widget.textclock()
 
 mytextclock:connect_signal("mouse::enter", function()
 		add_calendar(0)
 	end)
+
 mytextclock:connect_signal("mouse::leave", remove_calendar)
 mytextclock:buttons(awful.util.table.join(
 	awful.button({ }, 4, function()
