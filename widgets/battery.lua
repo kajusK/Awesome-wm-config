@@ -33,7 +33,11 @@ function battery_check()
 	end
 
 	if time then
-		battery:set_text(bat .. "%, " .. time)
+		if charging then
+			battery:set_markup("<span color='#00FF00'>"..bat.." %</span> "..time)
+		else
+			battery:set_text(bat .. "%, " .. time)
+		end
 	else
 		battery:set_text(bat .. "%")
 	end
