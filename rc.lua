@@ -10,6 +10,10 @@ local beautiful = require("beautiful")
 local naughty = require("naughty")
 local menubar = require("menubar")
 local hotkeys_popup = require("awful.hotkeys_popup").widget
+
+--just a nasty workaround, when defined in subfile, all later defined widgets
+--dissapear
+vicious = require("vicious")
 -- Enable hotkeys help widget for VIM and other apps
 -- when client with a matching name is opened:
 require("awful.hotkeys_popup.keys")
@@ -80,7 +84,14 @@ separator:set_text(" | ")
 
 require("widgets.clock")
 widget_add(separator)
+require("widgets.cpu")
+widget_add(separator)
+require("widgets.mem")
+widget_add(separator)
+require("widgets.temp")
+widget_add(separator)
 require("widgets.battery")
+widget_add(separator)
 widget_add(wibox.widget.systray())
 widget_add(separator)
 require("widgets.volume")
