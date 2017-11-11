@@ -3,9 +3,9 @@ local awful = require("awful")
 
 globalkeys = gears.table.join(globalkeys,
 	awful.key({ "Mod1" }, "Shift_L", function () kbdcfg.switch() end),
-	awful.key({}, "XF86AudioMute", function () os.execute("amixer set Master toggle") end),
-	awful.key({}, "XF86AudioLowerVolume", function () os.execute("amixer set Master 2dB-") end),
-	awful.key({}, "XF86AudioRaiseVolume", function () os.execute("amixer set Master 2dB+") end),
+	awful.key({}, "XF86AudioMute", volume_toggle),
+	awful.key({}, "XF86AudioLowerVolume", volume_down),
+	awful.key({}, "XF86AudioRaiseVolume", volume_up),
 	awful.key({}, "XF86AudioMicMute", function () os.execute("amixer set Capture toggle") end),
 	awful.key({}, "XF86Display", function () os.execute("scrot -e 'mv $f ~/Obrázky/screenshots/'") end),
 	awful.key({}, "XF86AudioPrev", function () os.execute("mocp --prev") end),

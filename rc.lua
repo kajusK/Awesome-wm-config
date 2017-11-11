@@ -83,6 +83,8 @@ widget_add(separator)
 require("widgets.battery")
 widget_add(wibox.widget.systray())
 widget_add(separator)
+require("widgets.volume")
+widget_add(separator)
 require("widgets.kb_layout")
 
 -- {{{ Helper functions
