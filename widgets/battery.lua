@@ -6,8 +6,7 @@ local battery = wibox.widget.textbox()
 local notified = 100
 battery:set_text("Battery")
 
-local batterytimer = gears:timer({ timeout = 10 })
-
+local batterytimer = gears.timer({ timeout = 100 })
 
 function battery_check()
 	fh = io.popen("acpi", "r")
@@ -56,4 +55,3 @@ batterytimer:start()
 widget_add(battery)
 
 battery_check()
-
